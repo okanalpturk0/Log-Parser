@@ -1,0 +1,113 @@
+# Log-Parser
+Log Parser application in Java
+This application is used to parse log files with certain separators.
+ Requested: Extracting the requested information from the given log file
+
+
+Example log file: http://a.ercdn.net/odev/nginx.access.log.7z
+
+An example line:
+
+
+99.91.220.138 - - [05/Oct/2015:06:37:26 +0300] "GET /R/0A/ID_0000013091.ism/QualityLevels(1469889)/Fragments(video=14795200000) HTTP/1.1" 200 658377 "- " "Firefox/1.5" "-" rt=0.000 ut="-" cs=HIT
+
+User ip address: 99.91.220.138
+Event time: [05/Oct/2015:06:37:26 +0300]
+Request method u: GET
+Content address: /R/0A/ID_0000013091.ism/QualityLevels(1469889)/Fragments(video=14795200000)
+Content name: ID_0000013091
+Content bitrate: QualityLevels(1469889) The part specified by Bold. Bitrate values should be taken as 1400000, 800000, 400000, 300000 etc. by discarding the fractions.
+Content type: Fragments(video=14795200000) Bold part (can be video or audio)
+HTTP Status: 200
+Total sent Bytes: 658377
+User Agent: Firefox/1.5
+Cache Status: cs={STATUS} : HIT (Cache used), MISS(not cached)
+
+
+Using the information given above, parsing should be performed on the sample log file and the following desired features should be produced.
+
+(This log file should not be a special operation, it should work fine when given a different log file. )
+Another point to be considered during the parsing process is the resource usage of the application and minimum resource usage should be ensured. (Values such as CPU, RAM, I/O)
+
+Desired features:
+
+ 
+
+· How many unique threads have been tracked? (Example: 548)
+
+· How many unique content has been watched? (Example: 3242)
+
+· How much data was sent in total? (Example: 500GB)
+
+· Most viewed user? (Example: 99.91.220.138)
+
+· Most viewed content? (Example: ID_0000013091)
+
+· Rate of bitrates watched (video). (Example: 1400000 = 80% , 800000 = 10% , 400000 = 5% , 300000 = 5%)
+
+· The percentage of browsers monitored. (Example: IE = 20% , Chrome=60% , Firefox = 20%)
+
+HTTP status rate (Example: 2xx=80%, 403=10%, 404=5%, 5xx=%3, 3xx=%2)
+
+
+You can give this information in the form of a table.
+
+Nice features though:
+
+ 
+
+· A web page, application or graphical interface that you will prepare for the output of the information.
+
+· A database connection to be created for the output interface
+
+· The above statistics can also be given on the basis of CONTENT.
+
+EXAMPLE :
+
+ID_0001
+
+§ How many unique ips have been tracked? (Example: 548)
+
+§ How many unique content has been watched? (Example: 3242)
+
+§ How much data was sent in total? (Example: 500GB)
+
+§ User with the most views? (Example: 99.91.220.138)
+
+§ Rate of bitrates watched (video). (Example: 1400000 = 80% , 800000 = 10% , 400000 = 5% , 300000 = 5%)
+
+§ Ratio of browsers monitored. (Example: IE = 20% , Chrome=60% , Firefox = 20%)
+
+§ HTTP status rate (Example: 2xx=80%, 403=10%, 404=5%, 5xx=%3, 3xx=%2)
+
+ID_0002
+
+§ How many unique ips have been tracked? (Example: 548)
+
+§ How many unique content has been watched? (Example: 3242)
+
+§ How much data was sent in total? (Example: 500GB)
+
+§ User with the most views? (Example: 99.91.220.138)
+
+§ Rate of bitrates watched (video). (Example: 1400000 = 80% , 800000 = 10% , 400000 = 5% , 300000 = 5%)
+
+§ Ratio of browsers monitored. (Example: IE = 20% , Chrome=60% , Firefox = 20%)
+
+§ HTTP status rate (Example: 2xx=80%, 403=10%, 404=5%, 5xx=%3, 3xx=%2)
+
+ID_000213
+
+§ How many unique ips have been tracked? (Example: 548)
+
+§ How many unique content has been watched? (Example: 3242)
+
+§ How much data was sent in total? (Example: 500GB)
+
+§ User with the most views? (Example: 99.91.220.138)
+
+§ Rate of bitrates watched (video). (Example: 1400000 = 80% , 800000 = 10% , 400000 = 5% , 300000 = 5%)
+
+§ Ratio of browsers monitored. (Example: IE = 20% , Chrome=60% , Firefox = 20%)
+
+§ HTTP status rate (Example: 2xx=80%, 403=10%, 404=5%, 5xx=%3, 3xx=%2
